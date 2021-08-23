@@ -10,6 +10,7 @@ data = json.load(open("data.json"))
 def translate(word):
     if word in data:
         return data[word]
+#     This condition checks for nouns such as paris that are in the dictionary as Paris (title case)
     elif word.title() in data:
         return data[word.title()]
     elif len(get_close_matches(word, data.keys(), cutoff=0.8)) > 0:
