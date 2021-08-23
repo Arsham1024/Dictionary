@@ -10,6 +10,8 @@ data = json.load(open("data.json"))
 def translate(word):
     if word in data:
         return data[word]
+    elif word.title() in data:
+        return data[word.title()]
     elif len(get_close_matches(word, data.keys(), cutoff=0.8)) > 0:
         #     This means that there are close matches found because the list has words in it
         answer =  input("Did you mean %s? Y for yes and N for no: " % get_close_matches(word, data.keys(), cutoff=0.8)[0])
