@@ -13,6 +13,8 @@ def translate(word):
 #     This condition checks for nouns such as paris that are in the dictionary as Paris (title case)
     elif word.title() in data:
         return data[word.title()]
+    elif word.upper() in data:
+        return data[word.upper()]
     elif len(get_close_matches(word, data.keys(), cutoff=0.8)) > 0:
         #     This means that there are close matches found because the list has words in it
         answer =  input("Did you mean %s? Y for yes and N for no: " % get_close_matches(word, data.keys(), cutoff=0.8)[0])
